@@ -1,50 +1,43 @@
+@font-face {
+  font-family: "Minecraft";
+  src: url("fonts/Minecraft.otf") format("opentype");
+  font-display: swap;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow-x: hidden;
 }
 
-
-/* Background video */
+/* BACKGROUND VIDEO — fills the screen behind everything else */
 .background-video {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
-  background: url("images/background.jpg") center / cover no-repeat;
+  z-index: -1;
 }
-
-
-/* Keep the portfolio content above the video */
-.title,
-.menu-stack,
-.menu-split {
-  position: relative;
-  z-index: 1;
-}
-
 
 /* Shared width for both button groups, stored once so we can do math with it below. */
 :root {
-  --menu-width: clamp(280px, 40vw, 650px);
+  --menu-width: clamp(310px, 44vw, 800px);
 }
 
-
 /* TITLE — scales with the viewport, height auto keeps its real aspect ratio.
-   clamp(min, preferred, max): never smaller than the min, never bigger than
-   the max, and in between it tracks the viewport width. */
+   clamp(min, preferred, max): never smaller than the min, never bigger
+   than the max, and in between it tracks the viewport width. */
 .title {
   width: clamp(280px, 55vw, 900px);
   height: auto;
   margin-top: 8vh;
-  margin-bottom: 5vh;
+  margin-bottom: 11vh;
 }
-
 
 /* GROUP 1 — Singleplayer / Multiplayer / Realms, stacked */
 .menu-stack {
@@ -54,13 +47,6 @@ body {
   width: var(--menu-width);
 }
 
-
-.menu-stack .btn {
-  width: 100%;
-  height: auto;
-}
-
-
 /* GROUP 2 — Options / Quit Game, side by side.
    std-btn.jpg is 400x40 (a 10:1 ratio), and since .btn is width:100% with
    height:auto, its rendered height is always (menu width / 10). Using that
@@ -69,18 +55,105 @@ body {
 .menu-split {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 18px;
   width: var(--menu-width);
   margin-top: calc(var(--menu-width) / 10);
 }
 
+/* Wrapper — the positioning anchor for the text layered on top of each button */
+.btn-wrap {
+  position: relative;
+  display: block;
+}
 
-.menu-split .half-btn {
-  height: auto;
+.menu-stack .btn-wrap {
+  width: 100%;
+}
+
+.menu-split .btn-wrap {
   flex: 1 1 0;
   min-width: 0;
 }
 
+/* Applies to BOTH .btn and .half-btn images — this is what was missing */
+.btn-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.btn-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: "Minecraft", monospace;
+  font-weight: normal;
+  font-size: clamp(1.5rem, 1.95vw, 1.95rem);
+  color: #ffffff;
+  text-shadow:
+    -0.3px -0.3px 0 #000,
+     0.3px -0.3px 0 #000,
+    -0.3px  0.3px 0 #000,
+     0.3px  0.3px 0 #000,
+     0     -0.3px 0 #000,
+     0      0.3px 0 #000,
+    -0.3px  0     0 #000,
+     0.3px  0     0 #000,
+     1.9px  1.9px 2.5px rgba(0, 0, 0, 1.0);
+  -webkit-text-stroke: 0.3px #000000;
+
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.btn-wrap {
+  cursor: pointer;
+}
+
+.btn-wrap:hover img {
+  filter: brightness(1.2);
+}
+
+.btn-wrap:hover .btn-text {
+  filter: brightness(1.2);
+}
+
+/* CORNER TEXT — pinned to the page itself, not the centered column,
+   so they stay put regardless of what's happening in the menu above */
+.corner-text {
+  position: fixed;
+  bottom: 12px;
+  font-family: "Minecraft", monospace;
+  font-weight: normal;
+  font-size: clamp(0.7rem, 1.7vw, 1.7rem);
+  color: #ffffff;
+    text-shadow:
+    -0.35px -0.35px 0 #000,
+     0.35px -0.35px 0 #000,
+    -0.35px  0.35px 0 #000,
+     0.35px  0.35px 0 #000,
+     0     -0.35px 0 #000,
+     0      0.35px 0 #000,
+    -0.35px  0     0 #000,
+     0.35px  0     0 #000,
+     1.5px  1.5px 1px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.35px #000000;
+
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.corner-text--left {
+  left: 12px;
+}
+
+.corner-text--right {
+  right: 12px;
+  text-align: right;
+}
 
 /* MOBILE LANDSCAPE
    Keeps Options / Quit Game side by side but scales the group down. */
@@ -89,12 +162,13 @@ body {
     width: 70vw;
     margin-top: calc(70vw / 10);
   }
-
-  .menu-split .half-btn {
+  .menu-split .btn-wrap {
     width: 0;
     flex: 1 1 0;
     min-width: 0;
-    height: auto;
+  }
+  .btn-text {
+    font-size: clamp(0.7rem, 1.6vw, 1.1rem);
   }
 }
 
@@ -102,20 +176,20 @@ body {
   body {
     justify-content: center;
   }
-
   .title {
     width: 85vw;
     margin-top: 0;
     margin-bottom: 5vh;
   }
-
   .menu-stack,
   .menu-split {
     width: 75vw;
   }
-
   .menu-split {
     margin-left: auto;
     margin-right: auto;
+  }
+  .btn-text {
+    font-size: clamp(0.75rem, 4vw, 1.5rem);
   }
 }
