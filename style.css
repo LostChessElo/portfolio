@@ -159,8 +159,8 @@ body {
    Keeps Options / Quit Game side by side but scales the group down. */
 @media (max-width: 900px) and (orientation: landscape) {
   .menu-split {
-    width: 70vw;
-    margin-top: calc(70vw / 10);
+    width: 45vw;
+    margin-top: calc(45vw / 10);
   }
   .menu-split .btn-wrap {
     width: 0;
@@ -168,7 +168,24 @@ body {
     min-width: 0;
   }
   .btn-text {
-    font-size: clamp(0.7rem, 1.6vw, 1.1rem);
+    font-size: clamp(0.65rem, 1.4vw, 0.95rem);
+    text-shadow:
+      -0.2px -0.2px 0 #000,
+       0.2px -0.2px 0 #000,
+      -0.2px  0.2px 0 #000,
+       0.2px  0.2px 0 #000,
+       0     -0.2px 0 #000,
+       0      0.2px 0 #000,
+      -0.2px  0     0 #000,
+       0.2px  0     0 #000,
+       0.9px  0.9px 1px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.2px #000000;
+  }
+
+  .corner-text {
+    bottom: auto;
+    top: 6px;
+    font-size: 0.6rem;
   }
 }
 
@@ -190,6 +207,32 @@ body {
     margin-right: auto;
   }
   .btn-text {
-    font-size: clamp(0.75rem, 4vw, 1.5rem);
+    font-size: clamp(0.6rem, 3.2vw, 1rem);
+    text-shadow:
+      -0.2px -0.2px 0 #000,
+       0.2px -0.2px 0 #000,
+      -0.2px  0.2px 0 #000,
+       0.2px  0.2px 0 #000,
+       0     -0.2px 0 #000,
+       0      0.2px 0 #000,
+      -0.2px  0     0 #000,
+       0.2px  0     0 #000,
+       0.9px  0.9px 1px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.2px #000000;
+  }
+
+  .corner-text {
+    left: 12px;
+    right: 12px;
+    text-align: center;
+    font-size: 0.55rem;
+  }
+
+  .corner-text--left {
+    bottom: 28px;
+  }
+
+  .corner-text--right {
+    bottom: 12px;
   }
 }
