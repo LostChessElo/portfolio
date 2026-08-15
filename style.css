@@ -1,11 +1,30 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: url("images/background.jpg") center / cover no-repeat;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Background video */
+.background-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  background: url("images/background.jpg") center / cover no-repeat;
+}
+
+
+/* Keep the portfolio content above the video */
+.title,
+.menu-stack,
+.menu-split {
+  position: relative;
+  z-index: 1;
 }
 
 /* Shared width for both button groups, stored once so we can do math with it below. */
@@ -14,8 +33,8 @@ body {
 }
 
 /* TITLE — scales with the viewport, height auto keeps its real aspect ratio.
-   clamp(min, preferred, max): never smaller than the min, never bigger
-   than the max, and in between it tracks the viewport width. */
+   clamp(min, preferred, max): never smaller than the min, never bigger than
+   the max, and in between it tracks the viewport width. */
 .title {
   width: clamp(280px, 55vw, 900px);
   height: auto;
@@ -51,8 +70,8 @@ body {
 
 .menu-split .half-btn {
   height: auto;
-  flex: 1 1 0;   /* grow/shrink equally, ignore the image's natural width when splitting space */
-  min-width: 0;   /* lets flex items shrink below their image's intrinsic width if needed */
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 /* MOBILE — below this width, stack Options/Quit Game like the row above
