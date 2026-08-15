@@ -7,6 +7,7 @@ body {
   align-items: center;
 }
 
+
 /* Background video */
 .background-video {
   position: fixed;
@@ -27,10 +28,12 @@ body {
   z-index: 1;
 }
 
+
 /* Shared width for both button groups, stored once so we can do math with it below. */
 :root {
   --menu-width: clamp(280px, 40vw, 650px);
 }
+
 
 /* TITLE — scales with the viewport, height auto keeps its real aspect ratio.
    clamp(min, preferred, max): never smaller than the min, never bigger than
@@ -42,6 +45,7 @@ body {
   margin-bottom: 5vh;
 }
 
+
 /* GROUP 1 — Singleplayer / Multiplayer / Realms, stacked */
 .menu-stack {
   display: flex;
@@ -50,10 +54,12 @@ body {
   width: var(--menu-width);
 }
 
+
 .menu-stack .btn {
   width: 100%;
   height: auto;
 }
+
 
 /* GROUP 2 — Options / Quit Game, side by side.
    std-btn.jpg is 400x40 (a 10:1 ratio), and since .btn is width:100% with
@@ -68,21 +74,48 @@ body {
   margin-top: calc(var(--menu-width) / 10);
 }
 
+
 .menu-split .half-btn {
   height: auto;
   flex: 1 1 0;
   min-width: 0;
 }
 
-/* MOBILE — below this width, stack Options/Quit Game like the row above
-   instead of squeezing two buttons side by side into a too-narrow row. */
-@media (max-width: 480px) {
+
+/* MOBILE LANDSCAPE
+   Keeps Options / Quit Game side by side but scales the group down. */
+@media (max-width: 900px) and (orientation: landscape) {
   .menu-split {
-    flex-direction: column;
-    gap: 8px;
+    width: 70vw;
+    margin-top: calc(70vw / 10);
   }
 
   .menu-split .half-btn {
-    width: 100%;
+    width: 0;
+    flex: 1 1 0;
+    min-width: 0;
+    height: auto;
+  }
+}
+
+@media (max-width: 900px) and (orientation: portrait) {
+  body {
+    justify-content: center;
+  }
+
+  .title {
+    width: 85vw;
+    margin-top: 0;
+    margin-bottom: 5vh;
+  }
+
+  .menu-stack,
+  .menu-split {
+    width: 75vw;
+  }
+
+  .menu-split {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
