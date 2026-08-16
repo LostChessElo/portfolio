@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.1" />
+  <title>Contact Me — Luke Ferley</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <video class="background-video" autoplay muted loop playsinline>
+    <source src="images/background-video-compressed.mp4" type="video/mp4" />
+  </video>
+
+  <a class="btn-wrap back-btn" href="about.html">
+    <img class="btn" src="images/options-btn.jpg" alt="" />
+    <span class="btn-text">< Back</span>
+  </a>
+
+  <div class="about-page">
+    <section class="mc-panel contact-page">
+      <div class="slot-label">SEND MESSAGE</div>
+      <h1>Contact Me</h1>
+
+      <form class="contact-form" action="https://formspree.io/f/xzepaqwo" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+        <button type="submit" class="btn-wrap send-btn">
+            <img class="half-btn" src="images/options-btn.jpg" alt="" />
+            <span class="btn-text">Send</span>
+        </button>
+      </form>
+    </section>
+  </div>
+
+</body>
+</html>
