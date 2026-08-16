@@ -62,17 +62,24 @@ body {
 @keyframes splashBounce {
   from {
     transform:
-      translate(var(--splash-x, 0px), var(--splash-y, 0px))
+      translate(
+        calc(var(--splash-x, 0px) * var(--splash-scale, 1)),
+        calc(var(--splash-y, 0px) * var(--splash-scale, 1))
+      )
       rotate(var(--splash-angle, -20deg))
       scale(1);
   }
   to {
     transform:
-      translate(var(--splash-x, 0px), var(--splash-y, 0px))
+      translate(
+        calc(var(--splash-x, 0px) * var(--splash-scale, 1)),
+        calc(var(--splash-y, 0px) * var(--splash-scale, 1))
+      )
       rotate(var(--splash-angle, -20deg))
       scale(1.1);
   }
 }
+
 /* GROUP 1 — Singleplayer / Multiplayer / Realms, stacked */
 .menu-stack {
   display: flex;
@@ -221,6 +228,13 @@ body {
     top: 6px;
     font-size: 0.6rem;
   }
+
+  .splash {
+    font-size: 1rem;   /* ← adjust this */
+    bottom: 55%;
+    right: -17%;
+    --splash-scale: 0.6;
+  }
 }
 
 @media (max-width: 900px) and (orientation: portrait) {
@@ -268,5 +282,12 @@ body {
 
   .corner-text--right {
     bottom: 12px;
+  }
+
+  .splash {
+    font-size: 0.75rem;   /* ← adjust this */
+    bottom: 65%;
+    right: -7%;
+    --splash-scale: 0.5;
   }
 }
