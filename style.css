@@ -502,15 +502,20 @@ body {
 /* MOBILE LANDSCAPE
    Keeps Options / Quit Game side by side but scales the group down. */
 @media (max-width: 900px) and (orientation: landscape) {
-  .menu-split {
-    width: 45vw;
-    margin-top: calc(45vw / 10);
+  :root {
+    --menu-width: 45vw;
   }
+
   .menu-split .btn-wrap {
     width: 0;
     flex: 1 1 0;
     min-width: 0;
   }
+
+  .icon-btn {
+    top: calc(61% + 8px);
+  }
+
   .btn-text {
     font-size: clamp(0.65rem, 1.4vw, 0.95rem);
     text-shadow:
@@ -524,6 +529,10 @@ body {
        0.2px  0     0 #000,
        0.9px  0.9px 1px rgba(0, 0, 0, 0.5);
     -webkit-text-stroke: 0.2px #000000;
+  }
+
+  .back-btn {
+    width: min(100px, 20vw);
   }
 
   .corner-text {
@@ -553,10 +562,28 @@ body {
   .menu-split {
     width: 75vw;
   }
+   :root {
+    --menu-width: 75vw;
+  }
+
+  body {
+    justify-content: center;
+  }
+  .title {
+    width: 85vw;
+    margin-top: 0;
+    margin-bottom: 5vh;
+  }
   .menu-split {
     margin-left: auto;
     margin-right: auto;
   }
+
+
+  .icon-btn {
+    top: calc(57% + 8px);
+  }
+
   .btn-text {
     font-size: clamp(0.6rem, 3.2vw, 1rem);
     text-shadow:
@@ -571,6 +598,11 @@ body {
        0.9px  0.9px 1px rgba(0, 0, 0, 0.5);
     -webkit-text-stroke: 0.2px #000000;
   }
+
+  .back-btn {
+    width: min(150px, 30vw);
+  }
+
 
   .corner-text {
     left: 12px;
