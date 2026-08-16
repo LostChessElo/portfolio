@@ -98,7 +98,30 @@ body {
   flex-direction: row;
   gap: 18px;
   width: var(--menu-width);
-  margin-top: calc(var(--menu-width) / 10);
+  margin-top: calc(var(--menu-width) / 10 - 5px);
+}
+
+.split-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.icon-btn {
+  position: absolute;
+  top: calc(69% + 8px);   /* was: top: 50% */
+  transform: translateY(-50%);
+  width: calc(var(--menu-width) / 10);
+  height: auto;
+}
+
+.icon-left {
+  right: calc(50% + var(--menu-width) / 2 + 12px);
+}
+
+.icon-right {
+  left: calc(50% + var(--menu-width) / 2 + 12px);
 }
 
 /* Wrapper — the positioning anchor for the text layered on top of each button */
