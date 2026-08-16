@@ -39,6 +39,40 @@ body {
   margin-bottom: 11vh;
 }
 
+.title-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.splash {
+  position: absolute;
+  bottom: 56%;
+  right: -14%;
+  transform-origin: right bottom;
+  font-size: 2rem;
+  color: #ffff55;
+  font-family: "Minecraft", monospace;
+  font-weight: normal;
+  text-shadow: 2px 2px 0 #3f3f00;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: splashBounce 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes splashBounce {
+  from {
+    transform:
+      translate(var(--splash-x, 0px), var(--splash-y, 0px))
+      rotate(var(--splash-angle, -20deg))
+      scale(1);
+  }
+  to {
+    transform:
+      translate(var(--splash-x, 0px), var(--splash-y, 0px))
+      rotate(var(--splash-angle, -20deg))
+      scale(1.1);
+  }
+}
 /* GROUP 1 — Singleplayer / Multiplayer / Realms, stacked */
 .menu-stack {
   display: flex;
