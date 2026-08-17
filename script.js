@@ -49,4 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 80);
         });
     });
+
+    document.querySelectorAll(".icon-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            clickSound.currentTime = 0;
+            clickSound.play();
+
+            setTimeout(() => {
+                if (button.target === "_blank") {
+                    window.open(button.href, "_blank", "noopener,noreferrer");
+                } else {
+                    window.location.href = button.href;
+                }
+            }, 80);
+        });
+    });
 });
