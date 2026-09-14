@@ -33,7 +33,7 @@ clickSound.preload = "auto";
 document.addEventListener("DOMContentLoaded", () => {
     setSplash();
 
-    document.querySelectorAll(".btn-wrap").forEach((button) => {
+    document.querySelectorAll("a.btn-wrap").forEach((button) => {
         button.addEventListener("click", (event) => {
             event.preventDefault();
 
