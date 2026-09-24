@@ -14,6 +14,13 @@ body {
   overflow-x: hidden;
 }
 
+#app {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* BACKGROUND VIDEO — fills the screen behind everything else */
 .background-video {
   position: fixed;
@@ -100,7 +107,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: var(--menu-width);
+  width: var(--menu-width); 
 }
 
 /* GROUP 2 — Options / Quit Game, side by side.
